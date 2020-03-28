@@ -1,6 +1,5 @@
 # coding=UTF-8
 
-import dblib as lb
 import numpy as np
 
 
@@ -66,6 +65,7 @@ class indicatorGroup:
                 break
  
     def LowPassFilter(self,ni,fi):
+        import lib.dblib as lb
         ret=lb.seq_intg(lb.seq_diff_filter(self.get(ni),fi))
         return ret
         
@@ -88,7 +88,8 @@ class indicatorGroup:
     #比單純的企圖再多一項動能處理，也就是若目前累加為正，則讓往後正值的累加減半，若往後是負值，則正常加總，如此可避免被反向摜殺    
     #INPUT:  委買口 , 委賣口 , 委買筆 , 委賣筆 , 主力單臨界值 , 散戶單臨界值
     #OUTPUT: 未純化主力企圖 , 純主力買企圖 , 純主力賣企圖 , 純散戶買企圖 , 純散戶賣企圖
-    def GetWantPower(self,n1,n2,n3,n4,t1,t2,energy=0):    
+    def GetWantPower(self,n1,n2,n3,n4,t1,t2,energy=0):  
+        import lib.dblib as lb
         a1=lb.seq_diff(self.get(n1))
         a2=lb.seq_diff(self.get(n2))
         a3=lb.seq_diff(self.get(n3))
@@ -117,7 +118,8 @@ class indicatorGroup:
 
     #INPUT:  起始, 結束, 買成筆 , 賣成筆 , 成交口
     #OUTPUT: 未純化企圖  
-    def GetNotPureWantPower(self,start,stop,n1,n2,n3,n4):     
+    def GetNotPureWantPower(self,start,stop,n1,n2,n3,n4): 
+        import lib.dblib as lb 
         if start==None: start=0
         if stop==None: stop=len(self.get(n1))
         a1=lb.seq_diff(self.get(n1)[start:stop])
@@ -139,6 +141,7 @@ class indicatorGroup:
     #INPUT:  起始, 結束, 買成筆 , 賣成筆 , 成交口
     #OUTPUT: 未純化作為        
     def GetNotPureDoPower(self,start,stop,n1,n2,v1):
+        import lib.dblib as lb
         dib=lb.seq_diff(self.get(n1)[start:stop])
         dis=lb.seq_diff(self.get(n2)[start:stop])
         div=lb.seq_diff(self.get(v1)[start:stop])
@@ -156,6 +159,7 @@ class indicatorGroup:
     #INPUT:  起始,結束,買成筆 , 賣成筆 , 成交口 , 均口臨界值(H,L) 
     #OUTPUT: 純化作為
     def GetPureDoPower(self,start,stop,n1,n2,v1,th,tl):
+        import lib.dblib as lb
         dib=lb.seq_diff(self.get(n1)[start:stop])
         dis=lb.seq_diff(self.get(n2)[start:stop])
         div=lb.seq_diff(self.get(v1)[start:stop])
@@ -294,7 +298,8 @@ class indicatorGroup:
         self.add('TIME',timelist) 
         
         
-    def LoadCustomIndicator(self,N): 
+    def LoadCustomIndicator(self,N):
+        import lib.dblib as lb
         #if type(N)==str :  N=unicode(N,"utf-8")
         #################### 指數 ####################
         if N==u"現期價差" : 

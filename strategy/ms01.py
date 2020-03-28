@@ -1,5 +1,6 @@
 # coding=UTF-8
 import imp
+import sys;	sys.path.append("../")
 import lib.indicator as ind; imp.reload(ind);  
 ###############################################################################   
 def filter1(self,I):    #2代濾網  IF(OR(AND((AM2>10.5),(AM2<16.5)),AND((AU2>6),(AU2<8))),0,AV2)

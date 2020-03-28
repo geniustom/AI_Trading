@@ -2,7 +2,7 @@
 import numpy as np
 import pylab as pl
 import scipy as sc
-import dblib as lb
+import lib.dblib as lb
 
 
 def CalMDD(profit,detail):

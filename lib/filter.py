@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys,imp
 import datetime
-import dblib as dl;             imp.reload(dl);
-import indicator as indl;       imp.reload(indl);
-import strategy_lib as sl;      imp.reload(sl);
+import lib.dblib as dl;             imp.reload(dl);
+import lib.indicator as indl;       imp.reload(indl);
+import lib.strategy_lib as sl;      imp.reload(sl);
 import numpy as np
 
 sys.path.append("..") 

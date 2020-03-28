@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import imp
 import numpy as np
-import common    as cm;             imp.reload(cm);
+import strategy.common    as cm;             imp.reload(cm);
 import lib.dblib as dl;             imp.reload(dl);
 import lib.indicator as ind;        imp.reload(ind);
 

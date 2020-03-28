@@ -1,8 +1,8 @@
 # coding=UTF-8
 import imp
-import dblib as lb;             imp.reload(lb);
-import indicator as indl;       imp.reload(indl);
-import strategy_lib as sl;      imp.reload(sl);
+import lib.dblib as lb;             imp.reload(lb);
+import lib.indicator as indl;       imp.reload(indl);
+import lib.strategy_lib as sl;      imp.reload(sl);
 
 class tracking:
     def __init__(self,dbconn,TData=None):

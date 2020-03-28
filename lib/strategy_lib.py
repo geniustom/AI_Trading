@@ -1,7 +1,7 @@
 # coding=UTF-8
 import imp
-import dblib as lb;             imp.reload(lb);
-import indicator as indl;       imp.reload(indl);
+import lib.dblib as lb;             imp.reload(lb);
+import lib.indicator as indl;       imp.reload(indl);
 
 class strategy:
     def __init__(self,dbconn,Indicator,StrategyID,StartTick=5,MaxTrader=6,MaxWin=9999,MaxLost=9999,Name="",Table="Future_Signal_Total",ShowSignal=0,DBSignal=0):        

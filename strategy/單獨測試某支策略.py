@@ -1,9 +1,9 @@
 # coding=UTF-8
 
-import os
-import common    as cm;      reload(cm);
-import lib.dblib as dl;      reload(dl);
-import s40_i;reload(s40_i);
+import os,imp
+import common    as cm;      imp.reload(cm);
+import lib.dblib as dl;      imp.reload(dl);
+import ms01;					  imp.reload(ms01);
 
 
 
@@ -19,4 +19,4 @@ def daytrade(s):
     return cm.runDayTrade(db,td,fName=s.FName,cName=__name__,sName=s.s1,sTittle=s.STittle)
 
 
-daytrade(s40_i)
+daytrade(ms01)

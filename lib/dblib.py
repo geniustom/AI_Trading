@@ -1,7 +1,7 @@
 # coding=UTF-8
 import numpy as np
 import imp
-import indicator as indl;       imp.reload(indl);
+import lib.indicator as indl;       imp.reload(indl);
 
 class timer:
     def __init__(self): 
@@ -120,7 +120,7 @@ class TradeData:
         self.sqlfield+="Future_TF_CurPrice,Future_TF_Volume,FutureWant_TF_TrustBuyVol,FutureWant_TF_TrustSellVol,FutureWant_TF_TrustBuyCnt,FutureWant_TF_TrustSellCnt,FutureWant_TF_TotalBuyCnt,FutureWant_TF_TotalSellCnt,"
         self.sqlfield+="Future_TE_CurPrice,Future_TE_Volume,FutureWant_TE_TrustBuyVol,FutureWant_TE_TrustSellVol,FutureWant_TE_TrustBuyCnt,FutureWant_TE_TrustSellCnt,FutureWant_TE_TotalBuyCnt,FutureWant_TE_TotalSellCnt"        
 
-        r, rcnt = self.dt.QueryDB("SELECT TDATE FROM (SELECT DISTINCT TDATE FROM RealTimeFuture WHERE TDATE>'13/01/01') as NEW ORDER BY TDATE")
+        r, rcnt = self.dt.QueryDB("SELECT TDATE FROM (SELECT DISTINCT TDATE FROM RealTimeFuture WHERE TDATE>'15/01/01') as NEW ORDER BY TDATE")
         rr=r.GetRows(rcnt)   
         #print rr
         self.DateList=[]            #撈db抓到的所有tdate
@@ -133,6 +133,7 @@ class TradeData:
         
     def QueryDBtoIndicators(self,SQL_Str,indGroup=None):
         self.Qy=Query(self.dbconn)
+        print(SQL_Str)
         r, rcnt= self.Qy.QueryDB(SQL_Str)
         print ("Data count : " + str(rcnt))  #just for debug
         rr=r.GetRows(rcnt)        
@@ -178,7 +179,7 @@ class TradeData:
 
     def FetchAllData(self):
         # 420604 筆以上會出問題
-        self.AllDataSQL = "Select " + self.sqlfield + " from RealTimeFuture WHERE TDATE>'13/01/01' ORDER BY TDATE,TIMEINDEX"
+        self.AllDataSQL = "Select " + self.sqlfield + " from RealTimeFuture WHERE TDATE>'15/01/01' ORDER BY TDATE,TIMEINDEX"
         indi=self.QueryDBtoIndicators(self.AllDataSQL)
         indi.GetBaseIndicator()    
         SearchIndex=0

@@ -1,14 +1,15 @@
 # coding=UTF-8
 import os,imp
 import numpy as np
-import common    as cm;      imp.reload(cm);
+import sys;	sys.path.append("../")
 import lib.dblib as dl;      imp.reload(dl);
 import lib.analytics as an;  imp.reload(an);
+#import strategy.common    as cm;      imp.reload(cm);
 import matplotlib.pyplot as plt
 #import time
 
 def OutputProfit(sname):
-    fname='D:/GIT/FutureStrategy/strategy/'+sname+'.py'
+    fname='D:/GIT/AI_Trading/strategy/'+sname+'.py'
     if os.path.exists(fname):
         runfile(fname)
         print (sname)
@@ -30,14 +31,13 @@ s_count=100
 
 
 
-
 try:
     dbstr = db.connstr
     datecount = td.DateCount
 except:
     db = dl.DBConn(host="127.0.0.1",uid="sa",pwd="geniustom",cata="FutureHis")
     td=dl.TradeData(db.conn)
-
+    datecount = td.DateCount
 
        
 for i in range(1,s_count+1):
